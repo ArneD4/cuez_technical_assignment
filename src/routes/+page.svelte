@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { calculateTimings } from "$lib/calculateTimings";
+  import { calculateTimings } from "$lib/calculateTimings.js";
 
   let episodeData = {};
   let timingsData = {};
@@ -14,13 +14,65 @@
     timingsData = await timingsResponse.json();
 
     calculatedTimings = calculateTimings(episodeData, timingsData);
+    console.log(calculatedTimings);
   });
 
   // State to track which part is expanded
   let expandedParts = {};
 </script>
 
-<div class="bg-blue-500 text-white p-4">Hello, Tailwind CSS!</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bg-blue-500 text-white p-4">
+  <div></div>
+</div>
 
 <div class="space-y-6">
   <!-- Table Header -->
