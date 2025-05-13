@@ -21,75 +21,29 @@
   let expandedParts = {};
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="bg-blue-500 text-white p-4">
+<div class="grid grid-cols-7 gap-4 border-b border-gray-300 p-4">
   <div></div>
+  <div>{calculatedTimings.on_air_time}</div>
+  <div>{calculatedTimings.off_air_time}</div>
+  <div>{calculatedTimings.estimated_duration}</div>
 </div>
 
 <div class="space-y-6">
   <!-- Table Header -->
   <div
-    class="grid grid-cols-7 gap-1 text-sm font-semibold text-gray-700 border-b border-gray-300 whitespace-nowrap"
+    class="grid grid-cols-7 gap-4 text-sm font-semibold text-gray-700 border-b border-gray-300 whitespace-nowrap m-0"
   >
-    <div class="p-3"></div>
-    <div class="p-3"></div>
-    <div class=" p-3"></div>
-    <div class="border-r border-gray-300 p-3">Est. Duration</div>
-    <div class="border-r border-gray-300 p-3">Front Time</div>
-    <div class="border-r border-gray-300 p-3">End Time</div>
-    <div class="p-3">Back Time</div>
+    <div class="px-3 py-1"></div>
+    <div class="px-3 py-1">Rundown</div>
+    <div class="border-r border-gray-300 px-3 py-1"></div>
+    <div class="border-r border-gray-300 px-3 py-1">Est. Duration</div>
+    <div class="border-r border-gray-300 px-3 py-1">Front Time</div>
+    <div class="border-r border-gray-300 px-3 py-1">End Time</div>
+    <div class="px-3 py-1">Back Time</div>
   </div>
   {#if calculatedTimings.parts}
     {#each calculatedTimings.parts as part, partIndex}
-      <div class="border border-gray-300 shadow-md">
+      <div class="border border-gray-300 shadow-md m-0">
         <!-- Part Header -->
         <div
           class="space-y-6 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-t-lg w-full"
@@ -117,7 +71,9 @@
                 </svg>
                 <span class="font-semibold text-lg text-gray-800">PART</span>
               </div>
-              <div class="font-bold p-3">{part.title}</div>
+              <div class="border-r border-gray-300 font-bold p-3">
+                {part.title}
+              </div>
               <div class="border-r border-gray-300 p-3">
                 {part.estimated_duration}
               </div>
@@ -130,24 +86,27 @@
 
         <!-- Items (Dropdown) -->
         {#if expandedParts[part.id]}
-          <div>
+          <div class="m-0">
             <!-- Table Rows -->
             {#each part.items as item, itemIndex}
-              <div
-                class="grid grid-cols-7 gap-4 text-sm text-gray-600 m-2 bg-white border border-gray-300 rounded-lg shadow-sm"
-              >
-              <div class="p-3">{itemIndex + 1}</div>
-                <div class="flex items-center space-x-2 p-3">
-                    <span class="bg-gray-400 text-white rounded-md p-1"
-                      >
-                      ITEM {itemIndex + 1}</span>
-
+                <div
+                class="grid grid-cols-7 gap-4 text-sm text-gray-600 items-center "
+                >
+                <div class="p-3">{itemIndex + 1}</div>
+                <div class="p-3">
+                  <span class="bg-gray-400 text-white rounded-md p-1">
+                    ITEM {itemIndex + 1}
+                  </span>
                 </div>
-                <div class="font-bold p-3">{item.title}</div>
-                <div class="border-r border-gray-300 p-3">{item.estimated_duration}</div>
-                <div class="border-r border-gray-300 p-3">{item.front_time}</div>
-                <div class="border-r border-gray-300 p-3">{item.end_time}</div>
-                <div class="p-3">{item.back_time}</div>
+                <div class="p-3 font-bold border-r border-gray-300">{item.title}</div>
+                <div class="p-3 border-r border-gray-300">
+                  {item.estimated_duration}
+                </div>
+                <div class="p-3 border-r border-gray-300">
+                  {item.front_time}
+                </div>
+                <div class="p-3 border-r border-gray-300">{item.end_time}</div>
+                <div class="p-3 border-r border-gray-300">{item.back_time}</div>
               </div>
             {/each}
           </div>

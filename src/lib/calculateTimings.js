@@ -28,6 +28,7 @@ export function calculateTimings(episodeData, timingData) {
     title: episodeData.episode.title,
     on_air_time: formatTime(onAirTime),
     off_air_time: formatTime(offAirTime),
+    estimated_duration: formatTime(offAirTime - onAirTime),
     parts: [],
   };
 
@@ -79,7 +80,6 @@ export function calculateTimings(episodeData, timingData) {
     }
 
     // Calculate part timings
-    console.log(items[items.length - 1]);
     const partFrontTime = items[0]?.front_time || console.log(`No items found for partId: ${partId}`);
     const partEndTime = items[items.length - 1]?.end_time || console.log(`No items found for partId: ${partId}`);   
     const partBackTime = formatTime(currentTime - timingPart.estimated_duration);
